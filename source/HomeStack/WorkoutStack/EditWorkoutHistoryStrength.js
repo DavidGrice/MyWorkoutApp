@@ -68,7 +68,7 @@ const EditWorkoutHistoryStrength = ({ navigation, route }) => {
             [route.params.workout_date, muscleGroup, strengthMuscle, 
             strengthDuration, strengthDurationType, strengthResistance, 
             strengthResistanceType, strengthRepetition, strengthRepetitionType, 
-            strengthCalories, strengthHeartRate, strengthHeartRateType, route.params.user_token],
+            strengthCalories, strengthHeartRate, strengthHeartRateType, route.params.user_token, route.params.strength_id],
             
             (txn, results) => {
                 console.log('Results', results.rowsAffected);

@@ -11,14 +11,13 @@ const Splash = () => {
             <LinearGradient
                     colors={['purple', 'darkblue']}
                     style={styles.linearGradient}>
+                        <Image 
+                            style={styles.splashLogo}
+                            source={SplashImage}
+                        /> 
 
-                    <Image 
-                        style={styles.splashLogo}
-                        source={SplashImage}
-                    /> 
-
-                    <Text style={styles.title}> MyWorkoutApp </Text>
-                    <ActivityIndicator size="large" color="white" style={styles.loader} />
+                        <Text style={styles.title}> MyWorkoutApp </Text>
+                        <ActivityIndicator size="large" color="white" style={styles.loader} />
                 </LinearGradient>
             </View>
         </SafeAreaView>
@@ -34,6 +33,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
+        alignSelf: 'center',
     },
 
     container: {
@@ -41,7 +41,10 @@ const styles = StyleSheet.create({
         marginLeft: 0,
         marginTop: 0,
         flexDirection: 'column',
-        backgroundColor: '#4c669f'
+        backgroundColor: '#4c669f',
+        // alignSelf: 'center',
+        // height: '100%',
+        // width: '100%',
     },
 
     linearGradient: {
@@ -53,14 +56,16 @@ const styles = StyleSheet.create({
         paddingTop: 0,
         height: '100%',
         width: '100%',
+        justifyContent: 'center',
       },
 
     splashLogo: {
-        marginTop: 125,
+        marginTop: 0,
         width: 400,
         height: 250,
         resizeMode: "stretch",
         backgroundColor: 'transparent',
+        alignSelf: 'center',
     },
 
     title: {
@@ -75,6 +80,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         width: 400,
+        alignSelf: 'center',
     },
 
     loader: {

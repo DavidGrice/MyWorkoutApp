@@ -212,7 +212,7 @@ const Main = () => {
             }
 
             dispatchState({type: 'RETRIEVE_TOKEN', user_token: userToken})
-        }, 1000);
+        }, 5000);
 
     }, []);
 

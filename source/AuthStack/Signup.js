@@ -87,118 +87,118 @@ const Signup = ({ navigation }) => {
             colors={['purple', 'darkblue']}
             style={styles.mainContent}
             >
-                <View style={styles.sectionStyling}>
-                    <ScrollView keyboardShouldPersistTaps="handled" style={styles.scrollViewStyle}>
-                        <KeyboardAvoidingView
+                <ScrollView keyboardShouldPersistTaps="handled" style={styles.scrollViewStyle}>
+                    <KeyboardAvoidingView
                         behavior="padding"
-                        style={styles.keyboardStyle}
+                        // style={styles.keyboardStyle}
                         >
-                        <Text style={styles.title}>Enter Credentials</Text>
-                        <View style={styles.inputTextBody}>
-                            <View style={styles.inputTextContainer}>
-                                <View style={styles.accidentalPressView}>
-                                    <TouchableOpacity onPress={() => navigation.goBack()}>
-                                        <Text style={styles.accidentalPressText}>Tap here to go back!</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.inputTextView}>
-                                    <Text style={styles.inputTextTitle}>Username:</Text>
-                                    <TextInput 
-                                        style={styles.inputTextStyle}
-                                        onChangeText={(inputUserName) => setInputUserName(inputUserName)}
-                                        underlineColorAndroid="#FFFFFF"
-                                        placeholder="Username Here!"
-                                        placeholderTextColor="white"
-                                        keyboardType="default"
-                                        onSubmitEditing={Keyboard.dismiss}
-                                        blurOnSubmit={false}
-                                        secureTextEntry={true}
-                                    />
-                                    {/* <CustomInputText 
-                                        placeholder="Username"
-                                        placeholderTextColor = "white"
-                                        onChangeText={(inputUserName) => setInputUserName(inputUserName)}
-                                        style={styles.inputTextStyle}
-                                    /> */}
-                                </View>
-                            
-                                <View style={styles.inputTextView}>
-                                    <Text style={styles.inputTextTitle}>Password:</Text>
-                                    <TextInput 
-                                        style={styles.inputTextStyle}
-                                        onChangeText={(inputPassword) => setInputPassword(inputPassword)}
-                                        underlineColorAndroid="#FFFFFF"
-                                        placeholder="Password Here!"
-                                        placeholderTextColor="white"
-                                        keyboardType="default"
-                                        onSubmitEditing={Keyboard.dismiss}
-                                        blurOnSubmit={false}
-                                        secureTextEntry={true}
-                                    />
-                                    {/* <CustomInputText 
-                                        placeholder="Password"
-                                        placeholderTextColor = "white"
-                                        onChangeText={(inputPassword) => setInputPassword(inputPassword)}
-                                        style={styles.inputTextStyle}
-                                    /> */}
-                                </View>
-                                <View style={styles.inputTextView}>
-                                    <Text style={styles.inputTextTitle}>First Name:</Text>
-                                    <TextInput 
-                                        style={styles.inputTextStyle}
-                                        onChangeText={(firstName) => setFirstName(firstName)}
-                                        underlineColorAndroid="#FFFFFF"
-                                        placeholder="First Name Here!"
-                                        placeholderTextColor="white"
-                                        keyboardType="default"
-                                        onSubmitEditing={Keyboard.dismiss}
-                                        blurOnSubmit={false}
-                                        secureTextEntry={true}
-                                    />
-                                    {/* <CustomInputText 
-                                            placeholder="First Name"
-                                            placeholderTextColor = "white"
-                                            onChangeText={(firstName) => setFirstName(firstName)}
-                                            style={styles.inputTextStyle}
-                                    /> */}
-                                </View>
-                                <View style={styles.inputTextView}>
-                                    <Text style={styles.inputTextTitle}>Last Name:</Text>
-                                    <TextInput 
-                                        style={styles.inputTextStyle}
-                                        onChangeText={(lastName) => setLastName(lastName)}
-                                        underlineColorAndroid="#FFFFFF"
-                                        placeholder="Last Name Here!"
-                                        placeholderTextColor="white"
-                                        keyboardType="default"
-                                        onSubmitEditing={Keyboard.dismiss}
-                                        blurOnSubmit={false}
-                                        secureTextEntry={true}
-                                    />
-                                    {/* <CustomInputText 
-                                            placeholder="Last Name"
-                                            placeholderTextColor = "white"
-                                            onChangeText={(lastName) => setLastName(lastName)}
-                                            style={styles.inputTextStyle}
-                                    /> */}
-                                </View>
+                        <View style={styles.sectionStyling}>
+
+                                <Text style={styles.title}>Enter Credentials</Text>
+                                <View style={styles.inputTextBody}>
+                                    <View style={styles.inputTextContainer}>
+                                        <View style={styles.accidentalPressView}>
+                                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                                                <Text style={styles.accidentalPressText}>Tap here to go back!</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                        <View style={styles.inputTextView}>
+                                            <Text style={styles.inputTextTitle}>Username:</Text>
+                                            <TextInput 
+                                                style={styles.inputTextStyle}
+                                                onChangeText={(inputUserName) => setInputUserName(inputUserName)}
+                                                underlineColorAndroid="#FFFFFF"
+                                                placeholder="Username Here!"
+                                                placeholderTextColor="white"
+                                                keyboardType="default"
+                                                onSubmitEditing={Keyboard.dismiss}
+                                                blurOnSubmit={false}
+                                                secureTextEntry={false}
+                                            />
+                                            {/* <CustomInputText 
+                                                placeholder="Username"
+                                                placeholderTextColor = "white"
+                                                onChangeText={(inputUserName) => setInputUserName(inputUserName)}
+                                                style={styles.inputTextStyle}
+                                            /> */}
+                                        </View>
+                                    
+                                        <View style={styles.inputTextView}>
+                                            <Text style={styles.inputTextTitle}>Password:</Text>
+                                            <TextInput 
+                                                style={styles.inputTextStyle}
+                                                onChangeText={(inputPassword) => setInputPassword(inputPassword)}
+                                                underlineColorAndroid="#FFFFFF"
+                                                placeholder="Password Here!"
+                                                placeholderTextColor="white"
+                                                keyboardType="default"
+                                                onSubmitEditing={Keyboard.dismiss}
+                                                blurOnSubmit={false}
+                                                secureTextEntry={true}
+                                            />
+                                            {/* <CustomInputText 
+                                                placeholder="Password"
+                                                placeholderTextColor = "white"
+                                                onChangeText={(inputPassword) => setInputPassword(inputPassword)}
+                                                style={styles.inputTextStyle}
+                                            /> */}
+                                        </View>
+                                        <View style={styles.inputTextView}>
+                                            <Text style={styles.inputTextTitle}>First Name:</Text>
+                                            <TextInput 
+                                                style={styles.inputTextStyle}
+                                                onChangeText={(firstName) => setFirstName(firstName)}
+                                                underlineColorAndroid="#FFFFFF"
+                                                placeholder="First Name Here!"
+                                                placeholderTextColor="white"
+                                                keyboardType="default"
+                                                onSubmitEditing={Keyboard.dismiss}
+                                                blurOnSubmit={false}
+                                                secureTextEntry={false}
+                                            />
+                                            {/* <CustomInputText 
+                                                    placeholder="First Name"
+                                                    placeholderTextColor = "white"
+                                                    onChangeText={(firstName) => setFirstName(firstName)}
+                                                    style={styles.inputTextStyle}
+                                            /> */}
+                                        </View>
+                                        <View style={styles.inputTextView}>
+                                            <Text style={styles.inputTextTitle}>Last Name:</Text>
+                                            <TextInput 
+                                                style={styles.inputTextStyle}
+                                                onChangeText={(lastName) => setLastName(lastName)}
+                                                underlineColorAndroid="#FFFFFF"
+                                                placeholder="Last Name Here!"
+                                                placeholderTextColor="white"
+                                                keyboardType="default"
+                                                onSubmitEditing={Keyboard.dismiss}
+                                                blurOnSubmit={false}
+                                                secureTextEntry={false}
+                                            />
+                                            {/* <CustomInputText 
+                                                    placeholder="Last Name"
+                                                    placeholderTextColor = "white"
+                                                    onChangeText={(lastName) => setLastName(lastName)}
+                                                    style={styles.inputTextStyle}
+                                            /> */}
+                                        </View>
 
 
 
+                                    </View>
+
+                                    {/* <CustomButton title="Submit" customClick={register_info}/> */}
+                                </View>
+                                
+                                <View style={styles.submitButton}>
+                                            <TouchableOpacity onPress={() => register_info()}>
+                                                <Text style={styles.submitButtonText}>Submit</Text>
+                                            </TouchableOpacity>
+                                </View>
                             </View>
-
-                            {/* <CustomButton title="Submit" customClick={register_info}/> */}
-                        </View>
-                        
-                        <View style={styles.submitButton}>
-                                    <TouchableOpacity onPress={() => register_info()}>
-                                        <Text style={styles.submitButtonText}>Submit</Text>
-                                    </TouchableOpacity>
-                        </View>
-                        </KeyboardAvoidingView>
-                    </ScrollView>
-
-                </View>
+                    </KeyboardAvoidingView>
+                </ScrollView>
             </LinearGradient>
         </SafeAreaView>
     )
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     },
 
     scrollViewStyle: {
-        height: '100%',
+        height: '0%',
         width: '100%',
     },
 
