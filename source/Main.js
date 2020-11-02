@@ -114,7 +114,8 @@ const HomeTabsScreen = () => {
             tabBarIcon: ({focused}) => (
                 <Icon name={focused?"chart-areaspline":"chart-line"} style={{color:'white'}} size={24} />
             ),
-        }}/>
+        }}
+        />
         <HomeTabs.Screen name="Profile" component={Profile}
         options={{
             tabBarLabel: 'Profile',

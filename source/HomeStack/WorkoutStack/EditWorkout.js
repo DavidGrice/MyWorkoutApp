@@ -13,27 +13,10 @@ let SuccessCB = () => {
 
 let db = openDatabase({ name: 'Workout.db'}, SuccessCB, errorCB);
 
-const EditWorkout = ({navigation, route}) => {
+const EditWorkout = ({navigation}) => {
     let [flatListItems, setFlatListItems] = useState([]);
-    let [userToken, setUserToken] = useState([]);
 
     useEffect(() => {
-        db.transaction((tx) => {
-            let sqlStatement = `SELECT DISTINCT main_workout.workout_date, main_workout.user_token FROM main_workout
-            LEFT JOIN workout_cardio ON workout_cardio.workout_date = main_workout.workout_date
-                                        AND  workout_cardio.user_token = main_workout.user_token
-            LEFT JOIN workout_strength ON workout_strength.workout_date = main_workout.workout_date
-                                        AND  workout_strength.user_token = main_workout.user_token`
-
-          tx.executeSql(sqlStatement, [], (tx, results) => {
-            var temp = [];
-            for (let i = 0; i < results.rows.length; ++i)
-              temp.push(results.rows.item(i));
-            console.log(temp)
-            setFlatListItems(temp);
-          });
-        });
-
         getAsyncData();
 
     }, []);
@@ -44,9 +27,25 @@ const EditWorkout = ({navigation, route}) => {
                 if (!errs) {
                     if (result !== null) {
                     console.log('userToken' + result); /* it works */
+                    db.transaction((tx) => {
+                        let sqlStatement = `SELECT DISTINCT main_workout.workout_date, main_workout.user_token FROM main_workout
+                        LEFT JOIN workout_cardio ON workout_cardio.workout_date = main_workout.workout_date
+                                                    AND  workout_cardio.user_token = main_workout.user_token
+                        LEFT JOIN workout_strength ON workout_strength.workout_date = main_workout.workout_date
+                                                    AND  workout_strength.user_token = main_workout.user_token
+                        WHERE main_workout.user_token = ?`
+            
+                      tx.executeSql(sqlStatement, [result], (tx, results) => {
+                        var temp = [];
+                        for (let i = 0; i < results.rows.length; ++i)
+                          temp.push(results.rows.item(i));
+                        console.log(temp)
+                        setFlatListItems(temp);
+                      });
+                    });
                     }
                 }
-                }).then((userToken) => setUserToken(userToken));
+                });
         } catch(error) {
             console.log(error)
         }

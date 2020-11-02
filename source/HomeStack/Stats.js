@@ -16,7 +16,7 @@ let SuccessCB = () => {
 
 let db = openDatabase({ name: 'Workout.db'}, SuccessCB, errorCB);
 
-const Stats = ({ navigation }) => {
+const Stats = ({ navigation, route }) => {
     let [strengthData, setStrengthData] = useState([]);
     let [userToken, setUserToken] = useState('');
     let [cardioDurationData, setCardioDurationData] = useState([]);
@@ -30,19 +30,18 @@ const Stats = ({ navigation }) => {
     let [strengthHeartRateData, setStrengthHeartRateData] = useState([]);
     let [strengthDateData, setStrengthDateData] = useState([]);
 
-
     useFocusEffect(
       React.useCallback(() => {
         const refreshScreen = refreshData();
-  
+        
         return () => refreshScreen;
       }, [])
     );
     
       const refreshData = () => {
-        getCardioData();
-        getStrengthData();
         getAsyncData();
+
+        console.log("Stats useFocusffect")
       };
 
     const getAsyncData = async() => {
@@ -51,26 +50,29 @@ const Stats = ({ navigation }) => {
               if (!errs) {
                   if (result !== null) {
                   console.log('userToken' + result); /* it works */
+                  getCardioData(result)
+                  getStrengthData(result)
                   }
               }
-              }).then((userToken) => setUserToken(userToken));
+              });
       } catch(error) {
           console.log(error)
       }
   }
 
-  let getCardioData = () => {
+  let getCardioData = (userTokenOne) => {
     db.transaction((tx) => {
       let sqlStatement = `SELECT cardio.workout_date CardioDate, cardio.cardio_muscle_group CardioMuscleGroup, 
       cardio.cardio_muscle CardioMuscle, cardio.cardio_duration CardioDuration, cardio.cardio_duration_type DurationType,
       cardio.cardio_resistance CardioResistance, cardio.cardio_resistance_type CardioResistanceType,
       cardio.cardio_distance CardioDistance, cardio.cardio_distance_type CardioDistanceType,
       cardio.cardio_calories_burned CardioCalories, cardio.cardio_heart_rate CardioHeartRate,
-      cardio.cardio_heart_rate_type CardioHeartRateType
+      cardio.cardio_heart_rate_type CardioHeartRateType, cardio.user_token
       FROM workout_cardio cardio
+      WHERE cardio.user_token = ?
       `
   
-      tx.executeSql(sqlStatement, [], (tx, results) => {
+      tx.executeSql(sqlStatement, [userTokenOne], (tx, results) => {
         var temp = [];
         for (let i = 0; i < results.rows.length; ++i) {
           temp.push(results.rows.item(i));
@@ -134,19 +136,20 @@ const Stats = ({ navigation }) => {
     });
   };
 
-  let getStrengthData = () => {
+  let getStrengthData = (userTokenOne) => {
     db.transaction((tx) => {
       let sqlStatement = `SELECT strength.workout_date StrengthDate, strength.strength_muscle_group StrengthMuscleGroup, 
       strength.strength_muscle StrengthMuscle, strength.strength_duration StrengthDuration, 
       strength.strength_duration_type StrengthDurationType, strength.strength_resistance StrengthResistance, 
       strength.strength_resistance_type StrengthResistanceType, strength.strength_repetition StrengthRepetition,
       strength.strength_repetition_type StrengthRepetitionType, strength.strength_calories_burned StrengthCalories, 
-      strength.strength_heart_rate StrengthHeartRate, strength.strength_heart_rate_type StrengthHeartRateType
+      strength.strength_heart_rate StrengthHeartRate, strength.strength_heart_rate_type StrengthHeartRateType, strength.user_token
       FROM workout_strength strength
+      WHERE strength.user_token = ?
       `
       
 
-        tx.executeSql(sqlStatement, [], (tx, results) => {
+        tx.executeSql(sqlStatement, [userTokenOne], (tx, results) => {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i) {
             temp.push(results.rows.item(i));

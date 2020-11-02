@@ -169,7 +169,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '40%',
         resizeMode: "stretch",
-        
     },
 
     sectionsStyling: {
@@ -178,17 +177,18 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 35,
         marginRight: 35,
-        margin: 10,
+        marginBottom: 10,
     },
 
     inputTextStyle: {
-        flex: 1,
         color: 'white',
         paddingLeft: 15,
         paddingRight: 15,
         borderWidth: 1,
         borderRadius: 30,
         borderColor: 'gold',
+        width: '100%',
+        height: '100%',
     },
 
     loginButton: {
